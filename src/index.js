@@ -10,4 +10,10 @@ app.engine('hbs',handlebars.engine({
 app.set('view engine','hbs');
 app.set('views','./src/views');
 
-app.listen(5000, console.log('The app is running at http://localhots:5000...'));
+app.use('/static',express.static('src/public'))
+
+app.get('/',(req,res)=>[
+    res.render('home',{layout:false})
+])
+
+app.listen(5000, console.log('The app is running at http://localhost:5000...'));
